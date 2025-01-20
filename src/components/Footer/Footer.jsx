@@ -121,7 +121,7 @@ const Footer = () => {
           >
             <img
               src="https://cdn-icons-png.flaticon.com/128/20/20837.png"
-              alt=""
+              alt="Facebook"
               className="w-6 h-6"
             />
           </a>
@@ -131,7 +131,7 @@ const Footer = () => {
           >
             <img
               src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png"
-              alt=""
+              alt="Twitter"
               className="w-6 h-6"
             />
           </a>
@@ -141,7 +141,7 @@ const Footer = () => {
           >
             <img
               src="https://cdn-icons-png.flaticon.com/128/717/717392.png"
-              alt=""
+              alt="Intagram"
               className="w-6 h-6"
             />
           </a>
@@ -151,7 +151,7 @@ const Footer = () => {
           >
             <img
               src="https://cdn-icons-png.flaticon.com/128/2111/2111774.png"
-              alt=""
+              alt="WhatsApp"
               className="w-6 h-6"
             />
           </a>
