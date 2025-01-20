@@ -1,9 +1,26 @@
 import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import MenuPage from "./pages/MenuPage";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import About from "./pages/About";
 
 function App() {
   return (
-    <div className="container bg-gray-100">
-      <Home />
+    <div className="relative">
+      <div className="container px-20 pt-12 pb-3 bg-gray-200 mx-auto">
+        <Router>
+          <div className="fixed w-full left-0 top-0 z-50">
+            <Header />
+          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/menu" element={<MenuPage />} />
+          </Routes>
+        </Router>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Header = () => {
   return (
@@ -10,44 +11,44 @@ const Header = () => {
         </h1>
       </div>
       <div className="flex items-center space-x-5">
-        <a
-          href="#"
+        <Link
+          to={"/"}
           className="text-gray-800 font-poppins font-medium duration-200 hover:text-orange-500"
         >
           Home
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to={"/about"}
           className="text-gray-800 font-poppins font-medium duration-200 hover:text-orange-500"
         >
           About
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to={"/promotions"}
           className="text-gray-800 font-poppins font-medium duration-200 hover:text-orange-500"
         >
           Promotions
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to={"/menu"}
           className="text-gray-800 font-poppins font-medium duration-200 hover:text-orange-500"
         >
           Menu
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to={"/table"}
           className="text-gray-800 font-poppins font-medium duration-200 hover:text-orange-500"
         >
           Table
-        </a>
+        </Link>
       </div>
       <div className="flex items-center space-x-5">
-        <button className="border-gray-300 border hover:bg-orange-500 hover:text-white duration-300 px-5 py-2 rounded-lg">
+        <Link to={"/login"} className="border-gray-300 border hover:bg-orange-500 hover:text-white duration-300 px-5 py-2 rounded-lg">
           Login
-        </button>
-        <button className="border-gray-300 border hover:bg-orange-500 hover:text-white duration-300 px-5 py-2 rounded-lg">
+        </Link>
+        <Link to={"/register"} className="border-gray-300 border hover:bg-orange-500 hover:text-white duration-300 px-5 py-2 rounded-lg">
           Register
-        </button>
+        </Link>
       </div>
     </div>
   );
