@@ -138,9 +138,8 @@ const MenuPage = () => {
       </h1>
 
       <section className="grid grid-cols-12 gap-2">
-        {/* Left Section  */}
+        {/* Left Section for sorting and filtering */}
         <div className="col-span-3 relative">
-          {/* This will be the left section of the page where we will display the filters and sorting options. */}
           <div className="relative">
             <svg
               className="absolute left-3 top-3 h-5 w-5 text-gray-400"
@@ -195,7 +194,7 @@ const MenuPage = () => {
           </div>
         </div>
 
-        {/* // Right Section */}
+        {/* Right Section for showing the items */}
         <div className="col-span-9">
           <div className="flex justify-start flex-wrap items-center mb-6 gap-8 px-4 bg-green-600 rounded-lg">
             <h2 className="text-xl hover:bg-orange-600 text-white p-2 rounded-md cursor-pointer">
