@@ -6,3 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.table-class td{
+    padding: 10px;
+}
