@@ -6,7 +6,7 @@ import Footer from "./components/Footer/Footer";
 import About from "./pages/About";
 import Promotions from "./pages/Promotions";
 import Table from "./pages/Table";
-import Dashboard from "./pages/Admin/Dashboard";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
             <Route path="/promotions" element={<Promotions />} />
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/table" element={<Table />} />
-            <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </Router>
       </div>
