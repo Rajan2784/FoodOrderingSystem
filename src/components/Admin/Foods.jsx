@@ -48,30 +48,30 @@ const Foods = () => {
   return (
     <div>
       {/* Table Section */}
-      <div className="mt-10">
+      <div className="mt-10 min-h-screen w-full bg-gray-100">
         <h2 className="text-xl font-semibold mb-4 text-center">Manage Foods</h2>
         <table className="w-full table-auto border border-gray-300 text-center">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border border-gray-400">Name</th>
-              <th className="border border-gray-400">Category</th>
-              <th className="border border-gray-400">Price</th>
-              <th className="border border-gray-400">Discount</th>
-              <th className="border border-gray-400">Type</th>
-              <th className="border border-gray-400">Status</th>
-              <th className="border border-gray-400">Actions</th>
+              <th className="border border-gray-400 px-2 py-3">Name</th>
+              <th className="border border-gray-400 px-2 py-3">Category</th>
+              <th className="border border-gray-400 px-2 py-3">Price</th>
+              <th className="border border-gray-400 px-2 py-3">Discount</th>
+              <th className="border border-gray-400 px-2 py-3">Type</th>
+              <th className="border border-gray-400 px-2 py-3">Status</th>
+              <th className="border border-gray-400 px-2 py-3">Actions</th>
             </tr>
           </thead>
           <tbody>
             {foods.map((food, index) => (
               <tr key={index}>
-                <td className="border border-gray-400">{food.name}</td>
-                <td className="border border-gray-400">{food.category}</td>
-                <td className="border border-gray-400">{food.price}</td>
-                <td className="border border-gray-400">{food.discount}</td>
-                <td className="border border-gray-400">{food.type}</td>
-                <td className="border border-gray-400">{food.status}</td>
-                <td className="border border-gray-400">
+                <td className="border border-gray-400 px-2 py-3">{food.name}</td>
+                <td className="border border-gray-400 px-2 py-3">{food.category}</td>
+                <td className="border border-gray-400 px-2 py-3">{food.price}</td>
+                <td className="border border-gray-400 px-2 py-3">{food.discount}</td>
+                <td className="border border-gray-400 px-2 py-3">{food.type}</td>
+                <td className="border border-gray-400 px-2 py-3">{food.status}</td>
+                <td className="border border-gray-400 px-2 py-3">
                   <button className="text-red-500 hover:underline">
                     Delete
                   </button>

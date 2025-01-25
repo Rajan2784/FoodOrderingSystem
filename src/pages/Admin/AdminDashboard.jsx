@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Dashboard from "../../components/Admin/Dashboard";
 import FoodForm from "../../components/Admin/FoodForm";
 import Foods from "../../components/Admin/Foods";
+import Sidebar from "../../components/Admin/Sidebar";
 
 const AdminDashboard = () => {
   const {
@@ -12,16 +13,31 @@ const AdminDashboard = () => {
     reset,
   } = useForm();
 
+  const [tab, setTab] = useState("dashboard");
+
+  const renderTabs = () => {
+    switch (tab) {
+      case "dashboard":
+        return <Dashboard />;
+      case "foodItems":
+        return <Foods />;
+      case "addFood":
+        return <FoodForm />;
+      default:
+        return <Dashboard />;
+    }
+  };
+
   const onSubmit = (data) => {
     console.log(data);
     reset(); // Reset the form after submission
   };
 
   return (
-    <div className="min-h-screen mt-12">
-      <Dashboard />
+    <div className="min-h-screen flex mt-12 gap-5">
+      {/* <Dashboard />
       <Foods />
-      <FoodForm />
+      <FoodForm /> */}
       {/* Main Content */}
       {/* <main className="w-3/4 p-8 bg-gray-100">
         <h1 className="text-3xl font-bold text-green-700 mb-6">
@@ -106,9 +122,12 @@ const AdminDashboard = () => {
           </div>
         </form>
       </main> */}
+
+      <Sidebar setTab={setTab} tab={tab} />
+
+      {renderTabs()}
     </div>
   );
 };
 
 export default AdminDashboard;
-
