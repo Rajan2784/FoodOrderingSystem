@@ -132,7 +132,7 @@ const MenuPage = () => {
   const items = menuData[category] || [];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-5">
       <h1 className="text-3xl font-bold text-center mb-8 font-playwrite text-green-600">
         MENU
       </h1>
