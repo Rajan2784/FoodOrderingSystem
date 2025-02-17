@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Promotions from "./pages/Promotions";
 import Table from "./pages/Table";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/table" element={<Table />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </Router>
       </div>
