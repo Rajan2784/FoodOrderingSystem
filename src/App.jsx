@@ -8,6 +8,8 @@ import Promotions from "./pages/Promotions";
 import Table from "./pages/Table";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import LoginPage from "./pages/LoginPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckOutPage";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
             <Route path="/table" element={<Table />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
         </Router>
       </div>
