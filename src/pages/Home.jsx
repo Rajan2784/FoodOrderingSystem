@@ -17,7 +17,7 @@ const Home = () => {
             Welcome to Yum Hub Foodies :)
           </h1>
           <p className="mt-5 text-4xl z-20">Taste😋 the best in your town.</p>
-          <p class="text-lg md:text-xl text-gray-600 mt-4 mb-5">
+          <p className="text-lg md:text-xl text-gray-600 mt-4 mb-5">
             Delicious meals crafted with love, delivered straight to your door.
           </p>
           <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg">

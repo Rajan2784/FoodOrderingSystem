@@ -7,10 +7,21 @@ const cartSlice = createSlice({
     total: 0,
     billDiscount: 0,
     billPaid: false,
+    deliveryAddress:"",
+    orderPhone:"",
+    paymentMethod:"",
+    user:""
   },
+
   reducers: {
     addToCart(state, action) {
-      state.items = action.payload;
+      if (!Array.isArray(state.items)) {
+        state.items = []; // Ensure items is always an array
+      }
+      state.items.push(action.payload);
+    },
+    removeFromCart(state, action) {
+      state.items = state.items.filter(item => item.foodId !== action.payload.foodId);
     },
     manageCartPrice(state, action) {
       state.billDiscount = action.payload.billDiscount;
@@ -19,9 +30,15 @@ const cartSlice = createSlice({
     managePaid(state, action) {
       state.billPaid = action.payload;
     },
+    manageOrderDetails(state,action){
+      state.deliveryAddress = action.payload.deliveryAddress;
+      state.orderPhone = action.payload.orderPhone;
+      state.paymentMethod = action.payload.paymentMethod;
+      state.user = action.payload.user;
+    }
   },
 });
 
-export const { addToCart, manageCartPrice, managePaid } = cartSlice.actions;
+export const { addToCart,removeFromCart ,manageCartPrice, managePaid,manageOrderDetails } = cartSlice.actions;
 
 export default cartSlice.reducer;

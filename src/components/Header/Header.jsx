@@ -5,7 +5,8 @@ import { FaOpencart } from "react-icons/fa6";
 
 const Header = () => {
   const { user } = useSelector((store) => store.auth);
-  console.log(user);
+  const { items } = useSelector((store) => store.cart);
+  console.log();
   return (
     <div className="px-16 py-3 flex justify-between items-center bg-white shadow-md">
       <div className="flex items-center">
@@ -47,10 +48,15 @@ const Header = () => {
         </Link>
       </div>
       <div>
-        {user ? (
+        {user !== null && user !== undefined ? (
           <div>
-            <Link to={"/cart"}>
-              <FaOpencart size={32}/>
+            <Link to={"/cart"} className="relative">
+              <FaOpencart size={32} />
+              {items.length > 0 && (
+                <span className="absolute -top-3 right-0 bg-green-500 text-white text-sm rounded-full w-5 h-5 flex items-center justify-center">
+                  {items.length}
+                </span>
+              )}
             </Link>
           </div>
         ) : (

@@ -25,3 +25,22 @@ export const login = async (data) => {
     return { error: error.response ? error.response.data : error.message };
   }
 };
+
+export const getFoods = async() => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/foods`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+     return { error: error.response ? error.response.data : error.message };
+  }
+}
+
+export const orderDetails = async(data) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/order`,data);
+  } catch (error) {
+    console.log(error)
+    return { error: error.response ? error.response.data : error.message };
+  }
+}

@@ -1,138 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/slices/cartSlice";
+import { Bounce, toast, ToastContainer } from "react-toastify";
+import { getFoods } from "../utils/api";
 
 const MenuPage = () => {
-  //   const { category } = useParams();
+  const dispatch = useDispatch();
   const [category, setCategory] = useState("veg-thali");
-
-  // Mock menu data
-  const menuData = {
-    "veg-thali": [
-      {
-        name: "Dal Tadka",
-        description: "A creamy yellow lentil dish tempered with spices.",
-        image: "daal-tadka.jpg",
-        price: 150,
-      },
-      {
-        name: "Paneer Butter Masala",
-        description: "Cottage cheese cubes in a rich tomato gravy.",
-        price: 200,
-        image: "panner-butter-masala.jpg",
-      },
-      {
-        name: "Aloo Gobi",
-        description: "A dry curry made with potatoes and cauliflower.",
-        price: 120,
-        image: "aloo-gobi.jpg",
-      },
-      {
-        name: "Chana Masala",
-        description: "Spicy chickpea curry with flavorful masalas.",
-        price: 140,
-        image: "chana-masala.jpg",
-      },
-      {
-        name: "Vegetable Pulao",
-        description: "Fragrant rice cooked with mixed vegetables.",
-        price: 180,
-        image: "veg-pulao.jpg",
-      },
-    ],
-    "non-veg": [
-      {
-        name: "Butter Chicken",
-        description: "Tender chicken pieces in a creamy tomato gravy.",
-        price: 250,
-        image: "butter-chicken.jpg",
-      },
-      {
-        name: "Chicken Tikka Masala",
-        description: "Char-grilled chicken in a spiced curry.",
-        price: 230,
-        image: "chicken-tikka-masala.jpg",
-      },
-      {
-        name: "Mutton Curry",
-        description: "Slow-cooked lamb in a flavorful curry.",
-        price: 300,
-        image: "mutton-curry.jpg",
-      },
-      {
-        name: "Fish Curry",
-        description: "Fresh fish cooked in a spicy coconut gravy.",
-        price: 220,
-        image: "fish-curry.jpg",
-      },
-      {
-        name: "Chicken Biryani",
-        description: "Aromatic rice cooked with chicken and spices.",
-        price: 280,
-        image: "chicken-biryani.jpg",
-      },
-    ],
-    drinks: [
-      {
-        name: "Mango Lassi",
-        description: "A refreshing yogurt-based mango drink.",
-        price: 80,
-        image: "mango-lassi.jpg",
-      },
-      {
-        name: "Masala Chai",
-        description: "Indian spiced tea with milk.",
-        price: 40,
-        image: "masala-chai.jpg",
-      },
-      {
-        name: "Cold Coffee",
-        description: "Chilled coffee with milk and ice.",
-        price: 90,
-        image: "cold-coffee.jpg",
-      },
-      {
-        name: "Fresh Lime Soda",
-        description: "Sparkling lime soda, sweet or salty.",
-        price: 50,
-        image: "lime-soda.jpg",
-      },
-      {
-        name: "Coconut Water",
-        description: "Fresh coconut water served chilled.",
-        price: 70,
-        image: "coconut-water.jpg",
-      },
-      {
-        name: "Mazza",
-        description: "Fresh mango juice served chilled.",
-        price: 70,
-        image: "mazza.webp",
-      },
-      {
-        name: "Thumbs Up",
-        description: "Indian cola drink with a unique taste.",
-        price: 60,
-        image: "thumbs-up.webp",
-      },
-      {
-        name: "Sprite",
-        description: "Lemon-lime flavored carbonated drink.",
-        price: 60,
-        image: "sprite.webp",
-      },
-      {
-        name: "Coca Cola",
-        description: "Classic carbonated cola drink.",
-        price: 60,
-        image: "coca-cola.webp",
-      },
-    ],
+  const [foods,setFoods] = useState([])
+  const getFood = async () => {
+    const response = await getFoods();
+    setFoods(response)
+  }
+  
+  useEffect(()=>{
+    getFood()
+  },[])
+console.log(foods)
+  const handleCart = (item) => {
+    dispatch(addToCart(item));
+    toast.success("Added to Cart", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   };
-
-  // Retrieve the menu items for the selected category
-  const items = menuData[category] || [];
 
   return (
     <div className="container mx-auto px-4 py-8 mt-5">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <h1 className="text-3xl font-bold text-center mb-8 font-playwrite text-green-600">
         MENU
       </h1>
@@ -226,25 +140,28 @@ const MenuPage = () => {
             </h2>
           </div>
 
-          {items.length > 0 ? (
+          {foods.length > 0 ? (
             <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {items.map((item, index) => (
+              {foods.map((item) => (
                 <div
-                  key={index}
+                  key={item.foodId}
                   className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300"
                 >
                   <img
-                    src={`/${item.image}`}
-                    alt={item.name}
+                    src={`${item.foodImage}`}
+                    alt={item.foodName}
                     className="rounded-lg w-full h-60 object-cover mb-4"
                   />
-                  <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
-                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  <h2 className="text-xl font-semibold mb-2">{item.foodName}</h2>
+                  <p className="text-gray-600 mb-4">{item.foodDescription}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-bold text-green-500">
                       ₹{item.price}
                     </span>
-                    <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
+                    <button
+                      className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                      onClick={() => handleCart(item)}
+                    >
                       Add to Cart
                     </button>
                   </div>

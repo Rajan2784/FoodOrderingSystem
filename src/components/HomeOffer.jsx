@@ -5,7 +5,7 @@ const HomeOffer = () => {
   return (
     <div className="flex items-center justify-between mt-10">
       {items.map((item, index) => (
-        <div className="h-[30rem] w-[26rem] rounded-lg shadow-lg overflow-hidden group relative">
+        <div className="h-[30rem] w-[26rem] rounded-lg shadow-lg overflow-hidden group relative" key={index}>
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-125"

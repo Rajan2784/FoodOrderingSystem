@@ -1,21 +1,36 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { manageOrderDetails } from "../store/slices/cartSlice";
+import { orderDetails } from "../utils/api";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
+  const {user} = useSelector((store)=>store.auth)
+  const cart = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     deliveryAddress: "",
     orderPhone: "",
     paymentMethod: "Cash on Delivery",
+    user:user.userId
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    dispatch(manageOrderDetails(formData))
     console.log("Order Placed", formData);
+    console.log(cart)
+    try {
+      const response = await orderDetails(cart);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error.message)
+    }
     navigate("/order-confirmation");
   };
 
